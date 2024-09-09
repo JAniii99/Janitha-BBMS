@@ -9,6 +9,7 @@ const LoginregisterPage = () => {
     password: '',
     repeatPassword: '',
   });
+  console.log(formData);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +64,7 @@ const LoginregisterPage = () => {
       if (response.ok) {
         setSuccess('Registration successful! You can now log in.');
         console.log('Registration successful', data);
-        // You might want to redirect to the login page here
+        
       } else {
         setError(data.message || 'Registration failed');
       }

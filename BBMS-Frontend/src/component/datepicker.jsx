@@ -46,7 +46,11 @@ const Datepicker = ({ onChange, value }) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const hours = String(date.getHours()).padStart(2, '0');   
+    const minutes = String(date.getMinutes()).padStart(2, '0'); 
+    const seconds = String(date.getSeconds()).padStart(2, '0'); 
+   
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   };
 
   const renderCalendar = () => {
@@ -63,6 +67,7 @@ const Datepicker = ({ onChange, value }) => {
       const isSelected = formatDate(date) === selectedDate;
       days.push(
         <button
+          type="button"
           key={day}
           onClick={() => handleDateClick(day)}
           className={`h-8 w-8 rounded-full flex items-center justify-center text-sm
@@ -119,6 +124,8 @@ const Datepicker = ({ onChange, value }) => {
         </div>
       )}
     </div>
+
+    
   );
 };
 
