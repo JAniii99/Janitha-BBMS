@@ -4,7 +4,7 @@ import Card from '../component/card'
 function home() {
   return (
     <div>
-      <Card/>
+      {/* <Card/> */}
     </div>
   )
 }
