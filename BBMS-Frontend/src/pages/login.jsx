@@ -33,12 +33,15 @@ const LoginPage = () => {
       
       if(response.ok) {
           const data = await response.json();
-          setSuccess('Login successful!');
-          console.log('Login successful', data);
-        } else {
-          const errorData = await response.json();
-          setError(errorData.message || 'Invalid uname or password');
-        } 
+          if(data.status === true){
+            setSuccess('Login successful!');
+            console.log('Login successful', data);
+            window.location.href = '/home';
+          }else{
+            const errorData = await response.json();
+            setError(errorData.message || 'Invalid uname or password');
+          }
+      } 
 
       
     } catch (error) {
