@@ -18,55 +18,52 @@ const donorregisterform = () => {
         address: '',
         telephone: '',
         date: '',
-      });
+    });
 
-      console.log(formData);
-      const [error, setError] = useState('');
-      const [success, setSuccess] = useState('');
-      const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
-      const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value});
-      };
-      const handleDateChange = (selectedDate) => {
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    const handleDateChange = (selectedDate) => {
         setFormData({ ...formData, date: selectedDate });
-      };
+    };
 
-      const validateForm = () => {
+    const validateForm = () => {
         if (!formData.address || !formData.bloodgroup || !formData.bloodpackertnumber || !formData.date || !formData.donorage || !formData.donorfname || !formData.donornic || !formData.donorpname || !formData.donorweight || !formData.previoustransfusiontime || !formData.telephone) {
-          setError('Please fill in all fields');
-          return false;
+            setError('Please fill in all fields');
+            return false;
         }
         return true;
-      };
+    };
 
-      const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         setSuccess('');
 
-        if(!validateForm()){
+        if (!validateForm()) {
             return;
         }
         try {
-            const response =await fetch('http://localhost:8080/api/v1/donor/register',{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json',
+            const response = await fetch('http://localhost:8080/api/v1/donor/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                body:JSON.stringify({
-                    //   donorid : formData.
-                      bloodpackertnumber : formData.bloodpackertnumber,
-                      donorfname : formData.donorfname,
-                      donorpname : formData.donorpname,
-                      donornic :formData.donornic,
-                      donorage : formData.donorage,
-                      previoustransfusiontime : formData.previoustransfusiontime,
-                      donorweight : formData.donorweight,
-                      address : formData.address,
-                      donorbloodgroup : formData.bloodgroup,
-                      telephone : formData.telephone,
-                      date : formData.date,
+                body: JSON.stringify({
+                    bloodpackertnumber: formData.bloodpackertnumber,
+                    donorfname: formData.donorfname,
+                    donorpname: formData.donorpname,
+                    donornic: formData.donornic,
+                    donorage: formData.donorage,
+                    previoustransfusiontime: formData.previoustransfusiontime,
+                    donorweight: formData.donorweight,
+                    address: formData.address,
+                    donorbloodgroup: formData.bloodgroup,
+                    telephone: formData.telephone,
+                    date: formData.date,
                 }),
             });
 
@@ -75,17 +72,17 @@ const donorregisterform = () => {
             if (response.ok) {
                 setSuccess('Donor Registration successful');
                 console.log('Donor Registration successful', donordata);
-                
-              } else {
+
+            } else {
                 setError(donordata.message || 'Donor Registration failed');
-              }
-            
-            
+            }
+
+
         } catch (error) {
             setError('Something went wrong');
-            console.error('Error occured',error);
+            console.error('Error occured', error);
         }
-      } ;
+    };
 
 
 
@@ -102,10 +99,10 @@ const donorregisterform = () => {
                                     type="text"
                                     name="bloodpackertnumber"
                                     id="bloodpackertnumber"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 51100/20" required 
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 51100/20" required
                                     value={formData.bloodpackertnumber}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="sm:col-span-2">
                                 <label for="donorfname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donor Full Name</label>
@@ -116,7 +113,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Pasindu Maduwantha Samaranayake" required
                                     value={formData.donorfname}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="sm:col-span-2">
                                 <label for="donorpname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donor Packert Name</label>
@@ -127,7 +124,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Samaranayake P S" required
                                     value={formData.donorpname}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="sm:col-span-2">
                                 <label for="donornic" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIC</label>
@@ -138,7 +135,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 991236547V" required
                                     value={formData.donornic}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="w-full">
                                 <label for="donorage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
@@ -149,7 +146,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 24" required
                                     value={formData.donorage}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="w-full">
                                 <label for="previoustransfusiontime" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Previous Donated times</label>
@@ -160,7 +157,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
                                     value={formData.previoustransfusiontime}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div>
                                 <label for="bloodgroup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Group</label>
@@ -170,7 +167,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     value={formData.bloodgroup}
                                     onChange={handleInputChange}
-                                    >
+                                >
 
                                     <option selected="">Select Blood Group</option>
                                     <option value="Apositive" >A+</option>
@@ -193,7 +190,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
                                     value={formData.donorweight}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div class="sm:col-span-2">
                                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
@@ -204,7 +201,7 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" " required
                                     value={formData.address}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div >
                                 <label for="telephone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone</label>
@@ -215,9 +212,10 @@ const donorregisterform = () => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
                                     value={formData.telephone}
                                     onChange={handleInputChange}
-                                    />
+                                />
                             </div>
                             <div>
+                                <label for="telephone" class="block mb-2 text-sm font-medium text-transparent dark:text-white">.</label>
                                 <Datepicker value={formData.date} onChange={handleDateChange} />
                             </div>
                         </div>
