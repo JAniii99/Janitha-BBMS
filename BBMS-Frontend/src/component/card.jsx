@@ -2,27 +2,34 @@
 import React from 'react'
 import p1 from '../assets/react.svg'
 
-const card = () => {
+const card = (props) => {
+  const carddata = ["Blood1","Blood2","Blood3","Blood4","Blood5"];
+  const carddatalength = carddata.length;
   return (
     <div>
-      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-
-          </h5>
-        </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-        </p>
-        <a href="p1" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Read more
-          <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-          </svg>
-        </a>
+      <div className="flex items-center h-48 ml-5 mr-5 transition duration-200 ease-out transform border-2 shadow-lg cursor-pointer display rounded-xl hover:scale-105" style={{ overflow: 'hidden' }}>
+      
+      <div className="flex-grow w-3/5 mt-12 mb-12">
+        <h5 className="pl-4 mx-12 mt-8 text-lg font-bold tracking-tight text-center uppercase text-slate-500">
+        {carddatalength>0 && carddata.map((data) => data.title)}
+        </h5> 
+        <h3 className="m-4 text-4xl font-bold text-center text-red-700 dark:text-gray-400">
+        </h3>
+        <h2 className="m-4 text-lg font-bold tracking-tight text-center uppercase text-slate-500">
+        Blood
+        Component
+        Register
+        </h2>
+      </div>
+      <div className="w-2/5 flex-l h-100">
+        Text2
+        {/* {props.icon} */}
+        {/* <{props.icon} style={{ fontSize:'100px', margin:'10px' }} /> */}
+        {/* {SelectedIcon && <SelectedIcon style={{ fontSize: '100px', margin: '10px' }} />} */}
+      </div>
       </div>
     </div>
-  )
+    )
 }
 
 export default card
