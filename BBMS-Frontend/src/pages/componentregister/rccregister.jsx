@@ -2,6 +2,7 @@ import React from 'react'
 import Datepicker from '../../component/datepicker'
 import { useState } from 'react'
 import 'flowbite';
+import image from '../../assets/background.png';
 
 const rccregister = () => {
 
@@ -91,9 +92,9 @@ const rccregister = () => {
 
 
   return (
-    <div>
-      <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+    <div >
+      <section class="bg-white dark:bg-gray-900 h-screen " style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>
             <h2 class="mb-4 text-xl font-bold text-red-600 dark:text-white text-right">Red Cell Concentrate(RCC)</h2>
@@ -168,7 +169,7 @@ const rccregister = () => {
                 />
               </div>
               <div>
-                <label for="packerttype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Resus</label>
+                <label for="packerttype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Bag Type</label>
                 <select
                   id="packerttype"
                   name="packerttype"

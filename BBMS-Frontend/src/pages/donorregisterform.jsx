@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { AlertCircle, CheckCircle } from 'lucide-react';
 import 'flowbite';
 import Datepicker from '../component/datepicker';
-
+import image from '../assets/background.png';
 
 
 const Donorregisterform = () => {
@@ -87,9 +88,9 @@ const Donorregisterform = () => {
 
 
     return (
-        <div class="bg-gray-300">
-            <section class="bg-gray-300 dark:bg-gray-900">
-                <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16 sm:h-full">
+        <div class="bg-gray-300 ">
+            <section class="bg-gray-300 dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16 sm:h-fit">
                     <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Add a new Donor</h2>
                     <form action="#" onSubmit={handleSubmit}>
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -242,6 +243,14 @@ const Donorregisterform = () => {
                             <span className="sr-only">Info</span>
                             <div>
                                 <span className="font-medium">{error}</span>
+                            </div>
+                        </div>
+                    )}
+                    {success && (
+                        <div className="relative px-4 py-3 mt-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+                            <div className="flex items-center">
+                                <CheckCircle className="mr-2" size={20} />
+                                <span className="block sm:inline">{success}</span>
                             </div>
                         </div>
                     )}
