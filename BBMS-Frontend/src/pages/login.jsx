@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle } from 'lucide-react';
+import image from '../assets/background.png';
 
 const LoginPage = () => {
   const [uname, setUsername] = useState('');
@@ -33,13 +34,16 @@ const LoginPage = () => {
       
       if(response.ok) {
           const data = await response.json();
-          if(data.status === true){
-            setSuccess('Login successful!');
-            console.log('Login successful', data);
-            window.location.href = '/home';
-          }else{
-            const errorData = await response.json();
-            setError(errorData.message || 'Invalid uname or password');
+          if (response.ok && data.status) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('role', data.role);
+            if (data.role === 'ROLE_ADMIN') {
+              window.location.href='/admin';
+            } else {
+              window.location.href='/home';
+            }
+          } else {
+            setError(data.message || 'Invalid username or password');
           }
       } 
 
@@ -53,17 +57,17 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-100 sm:px-6 lg:px-8">
+    <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-100 sm:px-6 lg:px-8" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
+        <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-50">
           Blood Bank Management System
         </h2>
-        <p className="mt-2 text-sm text-center text-gray-600">
+        <p className="mt-2 text-sm text-center text-gray-50">
           Please sign in to your account
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md ">
         <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -113,14 +117,14 @@ const LoginPage = () => {
             </div>
           </form>
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <p className="text-sm text-center text-gray-600">
             Do you have a account?{' '}
-              <a href="/register" className="font-medium text-red-600 hover:text-red-500">
+              <a href="/register" className="font-medium text-red-600 hovenr:text-red-500">
                 Register
               </a>
             </p>
-          </div>
+          </div> */}
 
 
           {error && (

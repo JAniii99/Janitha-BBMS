@@ -2,6 +2,7 @@ import React from 'react'
 import Datepicker from '../../component/datepicker';
 import 'flowbite';
 import { useState } from 'react';
+import image from '../../assets/background.png';
 
 const ffpregister = () => {
   
@@ -79,8 +80,8 @@ const ffpregister = () => {
 
   return (
     <div>
-      <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <section class="bg-white dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16" >
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>
             <h2 class="mb-4 text-xl font-bold text-orange-600 dark:text-white text-right">Fresh Frozen Plasma(FFP)</h2>
