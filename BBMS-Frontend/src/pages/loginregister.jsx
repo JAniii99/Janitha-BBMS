@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle } from 'lucide-react';
 
+
 const LoginregisterPage = () => {
   const [formData, setFormData] = useState({
     uname: '',
@@ -77,7 +78,8 @@ const LoginregisterPage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-100 sm:px-6 lg:px-8">
+    <div className="flex flex-col justify-center min-h-screen py-12 bg-gray-100 sm:px-6 lg:px-8 " >
+      
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
           Blood Bank Management System
@@ -191,14 +193,14 @@ const LoginregisterPage = () => {
             </div>
           </form>
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <p className="text-sm text-center text-gray-600">
               Already have an account?{' '}
               <a href="/login" className="font-medium text-red-600 hover:text-red-500">
                 Sign in here
               </a>
             </p>
-          </div>
+          </div> */}
 
           {error && (
             <div className="relative px-4 py-3 mt-4 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
@@ -214,6 +216,7 @@ const LoginregisterPage = () => {
               <div className="flex items-center">
                 <CheckCircle className="mr-2" size={20} />
                 <span className="block sm:inline">{success}</span>
+                <></>
               </div>
             </div>
           )}

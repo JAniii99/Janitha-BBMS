@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { AlertCircle, CheckCircle } from 'lucide-react';
 import 'flowbite';
 import Datepicker from '../component/datepicker';
+import image from '../assets/background.png';
 
 
-
-const donorregisterform = () => {
+const Donorregisterform = () => {
 
     const [formData, setFormData] = useState({
         bloodpackertnumber: '',
@@ -87,10 +88,10 @@ const donorregisterform = () => {
 
 
     return (
-        <div class="bg-gray-300">
-            <section class="bg-gray-300 dark:bg-gray-900">
-                <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16 sm:h-full">
-                    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new Donor</h2>
+        <div class="bg-gray-300 ">
+            <section class="bg-gray-300 dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16 sm:h-fit">
+                    <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Add a new Donor</h2>
                     <form action="#" onSubmit={handleSubmit}>
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                             <div class="w-full">
@@ -99,7 +100,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="bloodpackertnumber"
                                     id="bloodpackertnumber"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 51100/20" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 51100/20" required=""
                                     value={formData.bloodpackertnumber}
                                     onChange={handleInputChange}
                                 />
@@ -110,7 +111,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="donorfname"
                                     id="donorfname"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Pasindu Maduwantha Samaranayake" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Pasindu Maduwantha Samaranayake" required=""
                                     value={formData.donorfname}
                                     onChange={handleInputChange}
                                 />
@@ -121,7 +122,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="donorpname"
                                     id="donorpname"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Samaranayake P S" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Samaranayake P S" required=""
                                     value={formData.donorpname}
                                     onChange={handleInputChange}
                                 />
@@ -132,7 +133,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="donornic"
                                     id="donornic"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 991236547V" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 991236547V" required=""
                                     value={formData.donornic}
                                     onChange={handleInputChange}
                                 />
@@ -143,7 +144,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="donorage"
                                     id="donorage"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 24" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" 24" required=""
                                     value={formData.donorage}
                                     onChange={handleInputChange}
                                 />
@@ -154,7 +155,7 @@ const donorregisterform = () => {
                                     type="number"
                                     name="previoustransfusiontime"
                                     id="previoustransfusiontime"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required=""
                                     value={formData.previoustransfusiontime}
                                     onChange={handleInputChange}
                                 />
@@ -187,7 +188,7 @@ const donorregisterform = () => {
                                     type="number"
                                     name="donorweight"
                                     id="donorweight"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required=""
                                     value={formData.donorweight}
                                     onChange={handleInputChange}
                                 />
@@ -198,7 +199,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="address"
                                     id="address"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" " required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" " required=""
                                     value={formData.address}
                                     onChange={handleInputChange}
                                 />
@@ -209,7 +210,7 @@ const donorregisterform = () => {
                                     type="text"
                                     name="telephone"
                                     id="telephone"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required=""
                                     value={formData.telephone}
                                     onChange={handleInputChange}
                                 />
@@ -226,10 +227,37 @@ const donorregisterform = () => {
                             Add Submit
                         </button>
                     </form>
+                    {error && (
+                        <div
+                            className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert"
+                        >
+                            <svg
+                                className="flex-shrink-0 inline w-4 h-4 me-3"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span className="sr-only">Info</span>
+                            <div>
+                                <span className="font-medium">{error}</span>
+                            </div>
+                        </div>
+                    )}
+                    {success && (
+                        <div className="relative px-4 py-3 mt-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+                            <div className="flex items-center">
+                                <CheckCircle className="mr-2" size={20} />
+                                <span className="block sm:inline">{success}</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
         </div>
     )
 }
 
-export default donorregisterform
+export default Donorregisterform

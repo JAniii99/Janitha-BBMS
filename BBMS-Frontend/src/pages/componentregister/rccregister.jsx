@@ -2,6 +2,7 @@ import React from 'react'
 import Datepicker from '../../component/datepicker'
 import { useState } from 'react'
 import 'flowbite';
+import image from '../../assets/background.png';
 
 const rccregister = () => {
 
@@ -26,14 +27,14 @@ const rccregister = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleDateChange = (selectedDate) => {
-    setFormData({ ...formData, rccdateofmanufacture : selectedDate });
+    setFormData({ ...formData, rccdateofmanufacture: selectedDate });
   };
 
   const handleDateChange2 = (selectedDate) => {
-    setFormData({ ...formData, rccdateofexpire : selectedDate });
+    setFormData({ ...formData, rccdateofexpire: selectedDate });
   };
 
- 
+
 
   const validateForm = () => {
     if (!formData.bloodpackertnumber || !formData.bloodGroup || !formData.bloodResus || !formData.donorpname || !formData.packertserialnumber || !formData.packerttype || !formData.rccvolume || !formData.eid || !formData.fname || !formData.rccdateofexpire || !formData.rccdateofmanufacture) {
@@ -76,6 +77,7 @@ const rccregister = () => {
       if (response.ok) {
         setSuccess('RCC Registration successful');
         console.log('RCC Registration successful', donordata);
+        window.location.href = '/component/plateletregister';
 
       } else {
         setError(donordata.message || 'RCC Registration failed');
@@ -90,12 +92,12 @@ const rccregister = () => {
 
 
   return (
-    <div>
-      <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+    <div >
+      <section class="bg-white dark:bg-gray-900 h-screen " style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>
-            <h2 class="mb-4 text-xl font-bold text-red-600 dark:text-white">Red Cell Concentrate(RCC)</h2>
+            <h2 class="mb-4 text-xl font-bold text-red-600 dark:text-white text-right">Red Cell Concentrate(RCC)</h2>
           </div>
           <form action="#" onSubmit={handleSubmit}>
             <div class="flex justify-center items-center ">
@@ -105,7 +107,7 @@ const rccregister = () => {
                   type="text"
                   name="bloodpackertnumber"
                   id="bloodpackertnumber"
-                  class="bg-gray-50 border border-red-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="50224/20" required
+                  class="bg-gray-50 border border-red-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="50224/20" required=""
                   value={formData.bloodpackertnumber}
                   onChange={handleInputChange}
                 />
@@ -120,7 +122,7 @@ const rccregister = () => {
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   value={formData.bloodGroup}
                   onChange={handleInputChange}
-                  >
+                >
                   <option selected="">Select Blood Group</option>
                   <option value="A" >A</option>
                   <option value="B">B</option>
@@ -136,8 +138,8 @@ const rccregister = () => {
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   value={formData.bloodResus}
                   onChange={handleInputChange}
-                  >
-                
+                >
+
                   <option selected="">Select Resus</option>
                   <option value="Positive" >+ (Positive)</option>
                   <option value="Negative">-  (Negative)</option>
@@ -149,7 +151,7 @@ const rccregister = () => {
                 <input
                   name="donorpname"
                   id="donorpname"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Samaranayake P S" required
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder=" Samaranayake P S" required=""
                   value={formData.donorpname}
                   onChange={handleInputChange}
 
@@ -160,21 +162,21 @@ const rccregister = () => {
                 <input
                   name="packertserialnumber"
                   id="packertserialnumber"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="SE123456789" required
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="SE123456789" required=""
                   value={formData.packertserialnumber}
                   onChange={handleInputChange}
 
                 />
               </div>
               <div>
-                <label for="packerttype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Resus</label>
+                <label for="packerttype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Bag Type</label>
                 <select
                   id="packerttype"
                   name="packerttype"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   value={formData.packerttype}
                   onChange={handleInputChange}
-                  >
+                >
 
                   <option selected="">Blood Bag Type</option>
                   <option value="SAGM">SAGM</option>
@@ -188,7 +190,7 @@ const rccregister = () => {
                   type="text"
                   name="rccvolume"
                   id="rccvolume"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Volume(ml)" required
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Volume(ml)" required=""
                   value={formData.rccvolume}
                   onChange={handleInputChange}
 
@@ -203,7 +205,7 @@ const rccregister = () => {
                   type="text"
                   name="fname"
                   id="fname"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Employee Name" required
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Employee Name" required=""
                   value={formData.fname}
                   onChange={handleInputChange}
 
@@ -215,7 +217,7 @@ const rccregister = () => {
                   type="text"
                   name="eid"
                   id="eid"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Employee ID" required
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Employee ID" required=""
                   value={formData.eid}
                   onChange={handleInputChange}
 
@@ -238,6 +240,28 @@ const rccregister = () => {
               Next Component
             </button>
           </form>
+
+          {error && (
+            <div
+              className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert"
+            >
+              <svg
+                className="flex-shrink-0 inline w-4 h-4 me-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+              </svg>
+              <span className="sr-only">Info</span>
+              <div>
+                <span className="font-medium">{error}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Successful message is not defined */}
         </div>
       </section>
     </div>
