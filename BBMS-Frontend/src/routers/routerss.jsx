@@ -11,6 +11,9 @@ import Adminhome from '../pages/Adminhome.jsx';
 import AdminRegistrationPage from '../pages/AdminRegistrationPage.jsx';
 import Componentupdate from '../pages/componentupdate.jsx';
 import ComponentRegisterSuccess from '../pages/componentregister/Componentregistersuccess.jsx';
+import Passwordchange from '../pages/passwordchange.jsx';
+import Componentissue from '../pages/componentissue.jsx';
+
 
 const routerss = [
   {
@@ -64,7 +67,16 @@ const routerss = [
   {
     path: '/component/ComponentRegisterSuccess',
     element:<ComponentRegisterSuccess />
+  },
+  {
+    path: '/register/passwordchange',
+    element:<Passwordchange />
+  },
+  {
+    path: '/componentissue',
+    element:<Componentissue />
   }
+
 ];
 
 export default routerss;
