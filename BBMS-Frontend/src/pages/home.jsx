@@ -8,19 +8,27 @@ import p5 from '../assets/updating arrows.png';
 import p6 from '../assets//discard.png';
 import p1 from '../assets/card background.png';
 import Footer from '../component/Footer.jsx';
+import image from '../assets/homebg.png';
+import Bloodstock from '../component/bloodstock.jsx';
 
 function Home() {
-  const carddata = ["Donor Register", "Component Register", "Component Issue", "Component Update", "Component Discard"];  
-  const cardicons = [p2, p3, p4, p5, p6];
-  const images = [p1, p1, p1, p1, p1]; 
-  const links = ["/donor", "/component/rccregister", "/blood3", "/componentupdate", "/blood5"];
+  const carddata = ["Donor Register", "Component Register", "Component Issue", "Component Update", "Component Discard","Change Password"];  
+  const cardicons = [p2, p3, p4, p5, p6,p6];
+  const images = [p1, p1, p1, p1, p1,p1]; 
+  const links = ["/donor", "/component/rccregister", "/blood3", "/componentupdate", "/blood5", "/register/passwordchange"];
 
   return (
-    <div className='h-screen bg-green-400 sm:grid-cols-1'>
-         <div>
-        <Navbar />
+    <div className='fixed w-screen h-screen bg-green-400 sm:grid-cols-1' style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className='h-'>
+      <Navbar />
+    </div>
+
+    <div className='pb-5 pl-5 pr-5'>
+        <Bloodstock />
       </div>
-      <div className="grid gap-4 pt-5 sm:grid-cols-3 sm:gap-6">
+    <div className='overflow-y-auto h-2/4'>
+     
+      <div className="grid gap-4 pt-0 pb-5 sm:grid-cols-3 sm:gap-6">
         {carddata.map((carddata, index) => (
           <Card
             key={index}
@@ -31,10 +39,11 @@ function Home() {
           />
         ))}
       </div>
-      <div className='fixed bottom-0 items-center justify-center w-full'>
-        <Footer container={true}/>
-      </div>
     </div>
+    <div className='fixed bottom-0 items-center justify-center w-full'>
+      <Footer container={true} />
+    </div>
+  </div>
   );
 }
 

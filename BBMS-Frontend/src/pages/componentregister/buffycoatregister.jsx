@@ -80,8 +80,8 @@ const Buffycoatregister = () => {
 
 
   return (
-    <div>
-      <section class="bg-white dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="overflow-y-auto" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section class="h-screen">
         <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>

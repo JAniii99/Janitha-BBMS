@@ -88,8 +88,8 @@ const Donorregisterform = () => {
 
 
     return (
-        <div class="bg-gray-300 ">
-            <section class="bg-gray-300 dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="overflow-y-auto bg-gray-300 " style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <section class="  dark:bg-gray-900 h-screen" >
                 <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16 sm:h-fit">
                     <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Add a new Donor</h2>
                     <form action="#" onSubmit={handleSubmit}>
