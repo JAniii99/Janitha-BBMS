@@ -35,7 +35,7 @@ const Bloodstockcard = (props) => {
                 setGroup(Group);
                 setResuss(Resuss);
                 setQuantity(Quantity);
-                console.log(Group, Resuss, Quantity);
+                // console.log(Group, Resuss, Quantity);
             }
         } catch (error) {
             console.log(error);
@@ -44,7 +44,7 @@ const Bloodstockcard = (props) => {
 
     return (
         <div
-            className="flex items-center w-40 h-40 transition duration-200 ease-out transform bg-white border-2 shadow-lg cursor-pointer rounded-xl"
+            className="flex items-center w-40 h-40 transition duration-200 ease-out transform bg-white border-2 shadow-lg cursor-pointer bg-opacity-60 rounded-xl"
             style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', padding: '0px' }}
         >
             <div

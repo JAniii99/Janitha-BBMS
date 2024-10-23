@@ -3,9 +3,11 @@ import Datepicker from '../../component/datepicker';
 import 'flowbite';
 import { useState } from 'react';
 import image from '../../assets/background.png';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 
-const ffpregister = () => {
-  
+
+const Ffpupdate = () => {
+
   const [formData, setFormData] = useState({
     bloodpackertnumber: '',
     ffpdateofmanufacture: '',
@@ -13,7 +15,7 @@ const ffpregister = () => {
     ffpvolume: '',
   });
 
-  console.log(formData);
+  // console.log(formData);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -45,7 +47,7 @@ const ffpregister = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:8080/api/v1/component/ffpreg', {
+      const response = await fetch('http://localhost:8080/api/v1/update/ffprupd', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -60,12 +62,12 @@ const ffpregister = () => {
 
       const donordata = await response.json();
 
-      if (response.ok) {
-        setSuccess('ffp Registration successful');
-        console.log('ffp Registration successful', donordata);
+      if (response.ok && donordata.error === null) {
+        setSuccess('ffp Update successful');
+        console.log('ffp Update successful', donordata);
 
       } else {
-        setError(donordata.message || 'ffp Registration failed');
+        setError(donordata.error || 'ffp Update failed');
       }
 
 
@@ -83,7 +85,7 @@ const ffpregister = () => {
       <section class="bg-white dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16" >
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update Component</h2>
             <h2 class="mb-4 text-xl font-bold text-orange-600 dark:text-white text-right">Fresh Frozen Plasma(FFP)</h2>
           </div>
           <form action="#" onSubmit={handleSubmit}>
@@ -139,39 +141,36 @@ const ffpregister = () => {
                 <label for="ffpdateofexpire" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Expire Date</label>
                 <Datepicker value={formData.ffpdateofexpire} onChange={handleDateChange2} />
               </div>
-              <div>
+              {/* <div>
                 <button
                   type="button"
                   onClick={() => window.location.href = '/component/buffycoatregister'}
                   class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-red-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                   Previous Component
                 </button>
-              </div>
-              <div>
+              </div> */}
+              <div className='flex justify-center pl-64'>
                 <button
                   type="submit"
                   class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                  Submit
+                  Update
                 </button>
               </div>
             </div>
           </form>
           {error && (
-            <div
-              className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert"
-            >
-              <svg
-                className="flex-shrink-0 inline w-4 h-4 me-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-              </svg>
-              <span className="sr-only">Info</span>
-              <div>
-                <span className="font-medium">{error}</span>
+            <div className="relative px-4 py-3 mt-4 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
+              <div className="flex items-center">
+                <AlertCircle className="mr-2" size={20} />
+                <span className="block sm:inline">{error}</span>
+              </div>
+            </div>
+          )}
+          {success && (
+            <div className="relative px-4 py-3 mt-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+              <div className="flex items-center">
+                <CheckCircle className="mr-2" size={20} />
+                <span className="block sm:inline">{success}</span>
               </div>
             </div>
           )}
@@ -182,4 +181,4 @@ const ffpregister = () => {
   )
 }
 
-export default ffpregister
+export default Ffpupdate
