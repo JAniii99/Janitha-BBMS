@@ -3,23 +3,24 @@ import Datepicker from '../../component/datepicker'
 import { useState } from 'react'
 import 'flowbite';
 import image from '../../assets/background.png';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 
-const rccregister = () => {
+const Rccupdate = () => {
 
   const [formData, setFormData] = useState({
     bloodpackertnumber: '',
-    bloodGroup: '',
-    bloodResus: '',
-    donorpname: '',
-    packertserialnumber: '',
-    packerttype: '',
+    // bloodGroup: '',
+    // bloodResus: '',
+    // donorpname: '',
+    // packertserialnumber: '',
+    // packerttype: '',
     rccvolume: '',
-    eid: '',
-    fname: '',
+    // eid: '',
+    // fname: '',
     rccdateofmanufacture: '',
     rccdateofexpire: '',
   });
-  console.log(formData);
+  // console.log(formData);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -37,7 +38,7 @@ const rccregister = () => {
 
 
   const validateForm = () => {
-    if (!formData.bloodpackertnumber || !formData.bloodGroup || !formData.bloodResus || !formData.donorpname || !formData.packertserialnumber || !formData.packerttype || !formData.rccvolume || !formData.eid || !formData.fname || !formData.rccdateofexpire || !formData.rccdateofmanufacture) {
+    if (!formData.bloodpackertnumber ||  !formData.rccvolume || !formData.rccdateofexpire || !formData.rccdateofmanufacture) {
       setError('Please fill in all fields');
       return false;
     }
@@ -52,21 +53,21 @@ const rccregister = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:8080/api/v1/component/rccreg', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/api/v1/update/rccupd', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           bloodpackertnumber: formData.bloodpackertnumber,
-          bloodGroup: formData.bloodGroup,
-          bloodResus: formData.bloodResus,
-          donorpname: formData.donorpname,
-          packertserialnumber: formData.packertserialnumber,
-          packerttype: formData.packerttype,
+          // bloodGroup: formData.bloodGroup,
+          // bloodResus: formData.bloodResus,
+          // donorpname: formData.donorpname,
+          // packertserialnumber: formData.packertserialnumber,
+          // packerttype: formData.packerttype,
           rccvolume: formData.rccvolume,
-          eid: formData.eid,
-          fname: formData.fname,
+          // eid: formData.eid,
+          // fname: formData.fname,
           rccdateofmanufacture: formData.rccdateofmanufacture,
           rccdateofexpire: formData.rccdateofexpire,
         }),
@@ -74,13 +75,13 @@ const rccregister = () => {
 
       const donordata = await response.json();
 
-      if (response.ok) {
-        setSuccess('RCC Registration successful');
-        console.log('RCC Registration successful', donordata);
-        window.location.href = '/component/plateletregister';
+      if (response.ok && donordata.error ===null) {
+        setSuccess('RCC Update successful');
+        console.log('RCC Update successful', donordata);
+        // window.location.href = '/component/plateletregister';
 
       } else {
-        setError(donordata.message || 'RCC Registration failed');
+        setError(donordata.error || 'RCC Update failed');
       }
 
 
@@ -96,7 +97,7 @@ const rccregister = () => {
       <section class="bg-white dark:bg-gray-900 h-screen" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div class="bg-white py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a Component</h2>
+            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update Component</h2>
             <h2 class="mb-4 text-xl font-bold text-red-600 dark:text-white text-right">Red Cell Concentrate(RCC)</h2>
           </div>
           <form action="#" onSubmit={handleSubmit}>
@@ -120,8 +121,8 @@ const rccregister = () => {
                   id="bloodGroup"
                   name="bloodGroup"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  value={formData.bloodGroup}
-                  onChange={handleInputChange}
+                  // value={formData.bloodGroup}
+                  // onChange={handleInputChange}
                 >
                   <option selected="">Select Blood Group</option>
                   <option value="A" >A</option>
@@ -130,14 +131,16 @@ const rccregister = () => {
                   <option value="O">O</option>
                 </select>
               </div>
+
+
               <div>
                 <label for="bloodResus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Resus</label>
                 <select
                   id="bloodResus"
                   name="bloodResus"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  value={formData.bloodResus}
-                  onChange={handleInputChange}
+                  // value={formData.bloodResus}
+                  // onChange={handleInputChange}
                 >
 
                   <option selected="">Select Resus</option>
@@ -146,7 +149,8 @@ const rccregister = () => {
                 </select>
               </div>
 
-              <div class="sm:col-span-2">
+
+              {/* <div class="sm:col-span-2">
                 <label for="donorpname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donor Packert Name</label>
                 <input
                   name="donorpname"
@@ -156,8 +160,10 @@ const rccregister = () => {
                   onChange={handleInputChange}
 
                 />
-              </div>
-              <div>
+              </div> */}
+
+
+              {/* <div>
                 <label for="packertserialnumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Packert serial Number</label>
                 <input
                   name="packertserialnumber"
@@ -167,8 +173,10 @@ const rccregister = () => {
                   onChange={handleInputChange}
 
                 />
-              </div>
-              <div>
+              </div> */}
+
+
+              {/* <div>
                 <label for="packerttype" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Resus</label>
                 <select
                   id="packerttype"
@@ -183,7 +191,9 @@ const rccregister = () => {
                   <option value="Triple">Triple</option>
                   <option value="Single">Single</option>
                 </select>
-              </div>
+              </div> */}
+
+
               <div>
                 <label for="rccvolume" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Packert Volume</label>
                 <input
@@ -196,10 +206,14 @@ const rccregister = () => {
 
                 />
               </div>
+
+
               <div>
                 {/* Empty div */}
               </div>
-              <div>
+
+
+              {/* <div>
                 <label for="fname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Packert Prepared By</label>
                 <input
                   type="text"
@@ -210,8 +224,10 @@ const rccregister = () => {
                   onChange={handleInputChange}
 
                 />
-              </div>
-              <div>
+              </div> */}
+
+
+              {/* <div>
                 <label for="eid" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Employee ID</label>
                 <input
                   type="text"
@@ -222,50 +238,51 @@ const rccregister = () => {
                   onChange={handleInputChange}
 
                 />
-              </div>
+              </div> */}
+
+
               <div>
                 <label for="rccdateofmanufacture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Manufature Date</label>
                 <Datepicker value={formData.rccdateofmanufacture} onChange={handleDateChange} />
               </div>
+
 
               {/* Try Auto Generate Expire Date After 35 */}
               <div>
                 <label for="rccdateofexpire" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Expire Date</label>
                 <Datepicker value={formData.rccdateofexpire} onChange={handleDateChange2} />
               </div>
+
+              
             </div>
             <button
               type="submit"
               class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-              Next Component
+              Update Component
             </button>
           </form>
 
           {error && (
-            <div
-              className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert"
-            >
-              <svg
-                className="flex-shrink-0 inline w-4 h-4 me-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-              </svg>
-              <span className="sr-only">Info</span>
-              <div>
-                <span className="font-medium">{error}</span>
+            <div className="relative px-4 py-3 mt-4 text-red-700 bg-red-100 border border-red-400 rounded" role="alert">
+              <div className="flex items-center">
+                <AlertCircle className="mr-2" size={20} />
+                <span className="block sm:inline">{error}</span>
               </div>
             </div>
           )}
 
-          {/* Successful message is not defined */}
+          {success && (
+            <div className="relative px-4 py-3 mt-4 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+              <div className="flex items-center">
+                <CheckCircle className="mr-2" size={20} />
+                <span className="block sm:inline">{success}</span>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>
   )
 }
 
-export default rccregister
+export default Rccupdate

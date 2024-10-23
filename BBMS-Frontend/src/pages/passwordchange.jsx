@@ -9,7 +9,7 @@ const passwordchange = () => {
         oldPassword: '',
         newPassword: '',
     });
-    console.log(formData);
+    // console.log(formData);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);

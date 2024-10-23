@@ -19,7 +19,7 @@ const rccregister = () => {
     rccdateofmanufacture: '',
     rccdateofexpire: '',
   });
-  console.log(formData);
+  // console.log(formData);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 

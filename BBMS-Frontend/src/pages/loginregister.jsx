@@ -10,7 +10,7 @@ const LoginregisterPage = () => {
     password: '',
     repeatPassword: '',
   });
-  console.log(formData);
+  // console.log(formData);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);

@@ -13,12 +13,16 @@ import Componentupdate from '../pages/componentupdate.jsx';
 import ComponentRegisterSuccess from '../pages/componentregister/Componentregistersuccess.jsx';
 import Passwordchange from '../pages/passwordchange.jsx';
 import Componentissue from '../pages/componentissue.jsx';
+import Buffycoatupdate from '../pages/componentupdate/buffycoatupdate.jsx';
+import Ffpupdate from '../pages/componentupdate/ffpupdate.jsx';
+import Plateletupdate from '../pages/componentupdate/plateletupdate.jsx';
+import Rccupdate from '../pages/componentupdate/rccupdate.jsx';
 
 
 const routerss = [
   {
     path: '/',
-    element: <App />, 
+    element: <App />,
   },
   {
     path: '/login',
@@ -54,28 +58,45 @@ const routerss = [
   },
   {
     path: '/admin',
-    element:<Adminhome />
+    element: <Adminhome />
   },
   {
     path: '/adminregistrationpage',
-    element:<AdminRegistrationPage />
+    element: <AdminRegistrationPage />
   },
   {
-    path: '/componentupdate',
-    element:<Componentupdate />
+    path: '/update',
+    element: <Componentupdate />
   },
   {
     path: '/component/ComponentRegisterSuccess',
-    element:<ComponentRegisterSuccess />
+    element: <ComponentRegisterSuccess />
   },
   {
     path: '/register/passwordchange',
-    element:<Passwordchange />
+    element: <Passwordchange />
   },
   {
     path: '/componentissue',
-    element:<Componentissue />
+    element: <Componentissue />
+  },
+  {
+    path: '/update/buffycoatupd',
+    element: <Buffycoatupdate />
+  },
+  {
+    path: '/update/ffprupd',
+    element: <Ffpupdate />
+  },
+  {
+    path: '/update/plateletupd',
+    element: <Plateletupdate />
+  },
+  {
+    path: '/update/rccupd',
+    element: <Rccupdate />
   }
+
 
 ];
 
