@@ -45,6 +45,7 @@ const LoginPage = () => {
           } else {
             setError(data.message || 'Invalid username or password');
           }
+          console.log(data);
       } 
 
       

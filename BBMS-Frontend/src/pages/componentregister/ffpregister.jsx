@@ -1,13 +1,14 @@
 import React from 'react'
 import Datepicker from '../../component/datepicker';
 import 'flowbite';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import image from '../../assets/background.png';
 
 const ffpregister = () => {
   
   const [formData, setFormData] = useState({
-    bloodpackertnumber: '',
+    bloodpackertnumber: localStorage.getItem('bloodpackertnumber') || '',
+    bloodGroup: localStorage.getItem('bloodGroup') || '',
     ffpdateofmanufacture: '',
     ffpdateofexpire: '',
     ffpvolume: '',
@@ -35,6 +36,15 @@ const ffpregister = () => {
     }
     return true;
   };
+  const bloodgroup = localStorage.getItem('bloodgroup');
+  const bloodpacknumber = localStorage.getItem('packnumber');
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      bloodGroup: bloodgroup || '',
+      bloodpackertnumber: bloodpacknumber || '',
+    }));
+  }, [bloodgroup,bloodpacknumber]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -110,7 +120,7 @@ const ffpregister = () => {
 
               <div>
                 <label for="bloodGroup" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Group</label>
-                <select
+                {/* <select
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 >
                   <option selected="">Select Blood Group</option>
@@ -118,7 +128,18 @@ const ffpregister = () => {
                   <option value="B">B</option>
                   <option value="AB">AB</option>
                   <option value="O">O</option>
-                </select>
+                </select> */}
+                <input
+                  type="text"
+                  name="bloodGroup"
+                  id="bloodGroup"
+                  className="bg-gray-50 border border-red-400 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  placeholder="50224/20"
+                  required
+                  value={formData.bloodGroup}
+                  onChange={handleInputChange}
+                  disabled
+                />
               </div>
 
               <div class="sm:col-span-2">

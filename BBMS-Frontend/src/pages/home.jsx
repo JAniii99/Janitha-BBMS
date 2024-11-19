@@ -15,7 +15,7 @@ function Home() {
   const carddata = ["Donor Register", "Component Register", "Component Issue", "Component Update", "Component Discard","Change Password"];  
   const cardicons = [p2, p3, p4, p5, p6,p6];
   const images = [p1, p1, p1, p1, p1,p1]; 
-  const links = ["/donor", "/component/rccregister", "/blood3", "/update", "/blood5", "/register/passwordchange"];
+  const links = ["/donor", "/component/rccregister", "/componentissue", "/update", "/blood5", "/register/passwordchange"];
 
   return (
     <div className='fixed w-screen h-screen bg-green-400 sm:grid-cols-1' style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>

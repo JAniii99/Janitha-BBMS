@@ -3,7 +3,9 @@ import React from 'react';
 
 
 const ComponentRegisterSuccess = () => {
-
+        localStorage.removeItem("packnumber");
+        localStorage.removeItem("bloodgroup");
+        localStorage.removeItem("bloodresus");
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
